@@ -1,0 +1,14 @@
+<h2>Upload a file</h2>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="file" required>
+  <button type="submit">Upload</button>
+</form>
+
+<h3>Your Uploaded Files:</h3>
+<ul>
+  {% for file in files %}
+    <li><a href="{{ url_for('uploaded_file', filename=file) }}" target="_blank">{{ file }}</a></li>
+  {% else %}
+    <li>No files uploaded yet.</li>
+  {% endfor %}
+</ul>

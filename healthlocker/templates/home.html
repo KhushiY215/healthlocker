@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>HealthLocker - Home</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h1>Welcome back, {{ user.username }}!</h1>
+        <a href="{{ url_for('upload') }}">Upload Medical Record</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <h1>Welcome to HealthLocker!</h1>
+        <a href="{{ url_for('register') }}">Register</a> |
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for msg in messages %}
+                    <li>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
